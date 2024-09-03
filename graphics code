@@ -1,0 +1,195 @@
+#include<Windows.h>
+#include<glut.h>
+//group16
+GLfloat ang = 0;
+void draw(void) {
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+
+	//lighting:
+	glLoadIdentity();
+	gluLookAt(-50, 0, 100, 0, 0, 0, 0, 1, 0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_COLOR_MATERIAL);
+
+	GLfloat pos[] = { -200,200,-600,1 };
+	glLightfv(GL_LIGHT0, GL_POSITION, pos);
+
+	//animate:
+	glRotated(ang, 0, 1, 0);
+
+	//body:
+	glPushMatrix();
+	glColor3f(0.7, 0, 0.7);
+	glTranslated(0, -10, 0);
+	glRotated(-90, 1, 0, 0);
+	glutSolidCone(8, 15, 30, 30);
+	glPopMatrix();
+
+
+	//hands:
+	glPushMatrix();
+	glColor3f(0.7, 0, 0.7);
+	glTranslated(-3.1, -1.5, 0);
+	glRotated(-90, 0, 1, 0);
+	glRotated(-30, 1, 0, 0);
+	glutSolidCone(1.5, 6, 30, 30);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glColor3f(0.7, 0, 0.7);
+	glTranslated(3.1, -1.5, 0);
+	glRotated(90, 0, 1, 0);
+	glRotated(-30, 1, 0, 0);
+	glutSolidCone(1.5, 6, 30, 30);
+	glPopMatrix();
+
+	//head:
+	glPushMatrix();
+	glColor3f(0.91, 0.78, 0.58);
+	glTranslated(0, 10, 0);
+	glutSolidSphere(7, 18, 18);
+	glPopMatrix();
+
+	// Eyes :
+	glPushMatrix();
+	glColor3f(0, 0, 0);
+	glTranslated(3, 12, -5);
+	glutSolidTorus(0.3, 0.5, 3, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3f(0, 0, 0);
+	glTranslated(-3, 12, -5);
+	glutSolidTorus(0.3, 0.5, 3, 30);
+	glPopMatrix();
+
+	//Mouth:
+	glPushMatrix();
+	glTranslated(1.6, 7, -5);
+	glScaled(0.2, 0.2, 0.2);
+	glColor3f(0.9, 0.3, 0.3);
+	glutSolidTorus(1, 5, 2, 50);
+	glPopMatrix();
+
+	//cheeks:
+	glPushMatrix();
+	glColor3f(0.9, 0.3, 0.3);
+	glTranslated(6, 8, -5);
+	glutSolidSphere(2, 10, 10);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3f(0.9, 0.3, 0.3);
+	glTranslated(-3, 8, -5);
+	glutSolidSphere(2, 10, 10);
+	glPopMatrix();
+
+
+	//nose:
+	glPushMatrix();
+	glColor3f(1, 0, 0);
+      glTranslated(1, 10, -5);
+	glRotated(200, 0, 1, 0);
+	glutSolidCone(1, 6, 30, 30);
+	glPopMatrix();
+
+
+	//Ice cream:
+	glPushMatrix();
+	glColor3f(0.91, 0.78, 0.61);
+	glTranslated(7.9, 7, 0);
+	glRotated(90, 1, 0, 0);
+	glutSolidCone(1.5, 6, 30, 30);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glColor3f(1, 1, 1);
+	glTranslated(7.9, 7, 0);
+	glutSolidSphere(2, 10, 10);
+	glPopMatrix();
+
+
+	//swim thing:
+	glPushMatrix();
+	glColor3f(0.9, 0.9, 0);
+	glTranslated(0, -5, 0);
+	glRotated(90, 1, 0, 0);
+	glutSolidTorus(2, 7, 30, 30);
+	glPopMatrix();
+
+
+
+	//Legs:
+
+	glPushMatrix();
+	glColor3f(0.7, 0, 0.7);
+	glTranslated(-3, -10.5, 0);
+	glRotated(90, 1, 0, 0);
+	glutSolidCone(2, 5, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3f(0.9, 0.9, 0);
+	glTranslated(-3, -15, 0);
+	glutSolidSphere(1, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3f(0.7, 0, 0.7);
+	glTranslated(4, -10.5, 0);
+	glRotated(90, 1, 0, 0);
+	glutSolidCone(2, 5, 30, 30);
+      glPopMatrix();
+
+
+
+
+	glPushMatrix();
+	glColor3f(0.9, 0.9, 0);
+	glTranslated(4, -15, 0);
+	glutSolidSphere(1, 30, 30);
+	glPopMatrix();
+
+	//party hat:
+
+	glPushMatrix();
+	glColor3f(0.7, 0, 0.7);
+	glTranslated(0, 16, 0);
+	glRotated(-90, 1, 0, 0);
+	glutSolidCone(3, 10, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3f(0.3, 0, 0.7);
+	glTranslated(0, 25, 0);
+	glutSolidSphere(1, 30, 30);
+	glPopMatrix();
+
+
+
+
+	ang += 0.03;
+	glutSwapBuffers();
+}
+
+void main() {
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
+	glutInitWindowSize(600, 600);
+	glutCreateWindow("Project");
+	glClearColor(1, 1, 1, 1);
+	glutDisplayFunc(draw);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(45, 1, 0, 100);
+	//glOrtho(-500, 500, -500, 500, -500, 500);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glutIdleFunc(draw);
+	glutMainLoop();
+}
